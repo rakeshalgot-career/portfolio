@@ -106,6 +106,25 @@ a{color:inherit;}
   font-family:var(--mono);
   font-size:13px;
   color:var(--muted);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:12px;
+}
+.brand .avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:2px solid var(--border);
+  overflow:hidden;
+  flex-shrink:0;
+}
+.brand .avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 .brand .name{
   font-family:var(--disp);
@@ -609,6 +628,9 @@ footer{
 <div class="layout">
   <aside class="sidebar" id="sidebar">
     <div class="brand">
+      <div class="avatar">
+        <img src="Profile.png" alt="Rakesh Algot" width="120" height="120" loading="lazy">
+      </div>
       api/v1<span class="dot">.</span>portfolio
       <span class="name">Rakesh Algot</span>
     </div>
@@ -635,9 +657,9 @@ footer{
   <main>
     <section class="hero" id="hero">
       <div class="req-line"><span class="verb">GET</span> /rakesh-algot HTTP/1.1</div>
-      <h1>Backend systems for<br><span class="accent">retrieval-grade</span> AI.</h1>
-      <div class="role">Python Developer — Generative AI &amp; FastAPI</div>
-      <p class="summary">I build scalable FastAPI services, async ingestion pipelines, and production RAG systems — the kind that turn a folder of documents into something an LLM can actually trust. Currently shipping at Yensi Solutions, Hyderabad.</p>
+      <h1>Python Developer<br><span class="accent">Generative AI &amp; FastAPI</span></h1>
+      <div class="role">Building production RAG systems &amp; LLM-powered backends</div>
+      <p class="summary">I design and build scalable FastAPI services, asynchronous ingestion pipelines, and retrieval-augmented generation systems that make LLMs actually reliable in production. Currently building at Yensi Solutions, Hyderabad.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="mailto:rakeshalgot.career@gmail.com">Send request →</a>
         <a class="btn btn-ghost" href="#experience">View /experience</a>
@@ -817,7 +839,7 @@ footer{
       </div>
     </section>
 
-    <footer>© 2026 Rakesh Algot · built with FastAPI energy, rendered in HTML</footer>
+    <footer>© 2026 Rakesh Algot</footer>
   </main>
 </div>
 
