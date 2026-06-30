@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakesh Algot — Python Developer | GenAI &amp; FastAPI</title>
+<meta name="description" content="Rakesh Algot — Python Developer specializing in Generative AI, FastAPI backend systems, RAG pipelines, and LLM integration. Based in Hyderabad, India.">
+<meta name="keywords" content="Rakesh Algot, rakesh algot, Python Developer, FastAPI, Generative AI, RAG, Hyderabad, backend developer, Yensi Solutions">
+<meta name="author" content="Rakesh Algot">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://rakeshalgot.dev">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Rakesh Algot — Python Developer | GenAI &amp; FastAPI">
+<meta property="og:description" content="Backend systems for retrieval-grade AI. Python Developer specializing in FastAPI, RAG pipelines, and LLM integration.">
+<meta property="og:url" content="https://rakeshalgot.dev">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://rakeshalgot.dev/og-image.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rakesh Algot — Python Developer | GenAI &amp; FastAPI">
+<meta name="twitter:description" content="Backend systems for retrieval-grade AI. Python Developer specializing in FastAPI, RAG pipelines, and LLM integration.">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rakesh Algot",
+  "url": "https://rakeshalgot.dev",
+  "jobTitle": "Python Developer",
+  "email": "rakeshalgot.career@gmail.com",
+  "telephone": "+91-8143130499",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Hyderabad",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://linkedin.com/in/algot-rakesh"
+  ],
+  "knowsAbout": ["Python", "FastAPI", "Generative AI", "RAG", "LLM Integration", "MongoDB", "Redis", "Docker", "AWS"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Yensi Solutions"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Nizam College",
+    "addressLocality": "Hyderabad"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E1116;
+  --panel:#141A22;
+  --panel-2:#11161D;
+  --border:#262E3A;
+  --text:#E9E4DA;
+  --muted:#8995A4;
+  --amber:#E8A33D;
+  --teal:#52BBAA;
+  --red:#E06C5C;
+  --mono:'JetBrains Mono', monospace;
+  --disp:'Space Grotesk', sans-serif;
+  --body:'Inter', sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  line-height:1.6;
+  font-size:16px;
+  background-image:
+    radial-gradient(circle at 85% 0%, rgba(232,163,61,0.06), transparent 40%),
+    radial-gradient(circle at 0% 80%, rgba(82,187,170,0.05), transparent 40%);
+}
+a{color:inherit;}
+::selection{background:var(--amber); color:#0E1116;}
+
+.layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:100vh;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+  border-right:1px solid var(--border);
+  padding:32px 24px;
+  position:sticky;
+  top:0;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  gap:36px;
+}
+.brand{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--muted);
+}
+.brand .name{
+  font-family:var(--disp);
+  font-size:20px;
+  font-weight:700;
+  color:var(--text);
+  display:block;
+  margin-top:4px;
+}
+.brand .dot{color:var(--teal);}
+
+.nav-routes{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  font-family:var(--mono);
+  font-size:13px;
+}
+.nav-routes a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 10px;
+  border-radius:6px;
+  color:var(--muted);
+  text-decoration:none;
+  border:1px solid transparent;
+  transition:all .15s ease;
+}
+.nav-routes a:hover{ color:var(--text); background:var(--panel); }
+.nav-routes a.active{
+  color:var(--amber);
+  background:var(--panel);
+  border-color:var(--border);
+}
+.nav-routes .method{
+  font-size:10px;
+  font-weight:700;
+  color:var(--teal);
+  width:30px;
+}
+.nav-routes a.active .method{color:var(--amber);}
+
+.sidebar-foot{
+  margin-top:auto;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.status-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 10px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  width:max-content;
+}
+.status-pill .pulse{
+  width:7px; height:7px; border-radius:50%;
+  background:var(--teal);
+  box-shadow:0 0 0 0 rgba(82,187,170,.6);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(82,187,170,.5);}
+  70%{box-shadow:0 0 0 6px rgba(82,187,170,0);}
+  100%{box-shadow:0 0 0 0 rgba(82,187,170,0);}
+}
+
+.sidebar-links{display:flex; gap:14px;}
+.sidebar-links a{
+  color:var(--muted);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+}
+.sidebar-links a:hover{ color:var(--amber); border-color:var(--amber); }
+
+/* mobile nav toggle */
+.nav-toggle{ display:none; }
+
+/* ---------- MAIN ---------- */
+main{ padding:0; min-width:0; }
+.section{
+  padding:90px 64px;
+  border-bottom:1px solid var(--border);
+  max-width:980px;
+}
+.section:last-child{border-bottom:none;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--teal);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow .path{ color:var(--muted); }
+.eyebrow .status{
+  color:var(--teal);
+  border:1px solid rgba(82,187,170,.35);
+  background:rgba(82,187,170,.08);
+  padding:1px 8px;
+  border-radius:4px;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:80px 64px 70px;
+  max-width:980px;
+}
+.req-line{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:28px;
+}
+.req-line .verb{
+  color:var(--bg);
+  background:var(--teal);
+  font-weight:700;
+  padding:2px 8px;
+  border-radius:4px;
+}
+.hero h1{
+  font-family:var(--disp);
+  font-weight:700;
+  font-size:clamp(36px,6vw,64px);
+  line-height:1.05;
+  letter-spacing:-0.02em;
+}
+.hero h1 .accent{ color:var(--amber); }
+.hero .role{
+  font-family:var(--mono);
+  font-size:clamp(14px,2vw,18px);
+  color:var(--teal);
+  margin-top:14px;
+}
+.hero p.summary{
+  margin-top:26px;
+  max-width:640px;
+  color:var(--muted);
+  font-size:16px;
+}
+.hero-actions{
+  margin-top:34px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.btn{
+  font-family:var(--mono);
+  font-size:13px;
+  padding:11px 20px;
+  border-radius:7px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--border);
+  transition:all .15s ease;
+}
+.btn-primary{
+  background:var(--amber);
+  color:#0E1116;
+  border-color:var(--amber);
+  font-weight:600;
+}
+.btn-primary:hover{ filter:brightness(1.08); transform:translateY(-1px); }
+.btn-ghost{ color:var(--text); }
+.btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+/* response panel - signature element */
+.response-panel{
+  margin-top:48px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+}
+.response-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 18px;
+  border-bottom:1px solid var(--border);
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  background:var(--panel-2);
+}
+.response-head .dots{ display:flex; gap:6px; }
+.response-head .dots span{ width:9px; height:9px; border-radius:50%; background:#2A313C; }
+.response-body{
+  padding:20px 22px;
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--text);
+  overflow-x:auto;
+}
+.response-body .k{ color:var(--teal); }
+.response-body .s{ color:var(--amber); }
+.response-body .n{ color:#9C8CD8; }
+.response-body .punc{ color:var(--muted); }
+.response-body pre{ white-space:pre-wrap; line-height:1.7; }
+
+/* ---------- SKILLS ---------- */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:18px;
+  margin-top:8px;
+}
+.skill-card{
+  border:1px solid var(--border);
+  background:var(--panel);
+  border-radius:10px;
+  padding:20px 22px;
+}
+.skill-card .label{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:12px;
+}
+.tag-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.tag{
+  font-family:var(--mono);
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:6px;
+  background:var(--panel-2);
+  border:1px solid var(--border);
+  color:var(--text);
+}
+.tag.glow{ border-color:rgba(232,163,61,.4); color:var(--amber); }
+
+/* ---------- EXPERIENCE ---------- */
+.job{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:32px;
+  padding:28px 0;
+}
+.job-meta{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--muted);
+}
+.job-meta .company{
+  display:block;
+  color:var(--text);
+  font-weight:600;
+  font-size:15px;
+  margin-bottom:6px;
+  font-family:var(--disp);
+}
+.job ul{ list-style:none; display:flex; flex-direction:column; gap:14px; }
+.job li{
+  position:relative;
+  padding-left:22px;
+  color:var(--text);
+  font-size:15px;
+}
+.job li::before{
+  content:"→";
+  position:absolute;
+  left:0;
+  color:var(--teal);
+  font-family:var(--mono);
+}
+.job li b{ color:var(--amber); font-weight:600; }
+
+/* ---------- PROJECTS ---------- */
+.projects-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:8px;
+}
+.project-card{
+  border:1px solid var(--border);
+  background:var(--panel);
+  border-radius:10px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:border-color .2s ease, transform .2s ease;
+}
+.project-card:hover{
+  border-color:rgba(82,187,170,.45);
+  transform:translateY(-3px);
+}
+.project-card .ptitle{
+  font-family:var(--disp);
+  font-size:19px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.project-card .ptitle .badge{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--bg);
+  background:var(--teal);
+  padding:2px 8px;
+  border-radius:4px;
+  font-weight:700;
+}
+.project-card .ptag{ color:var(--muted); font-size:14px; }
+.project-card .stack{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--amber);
+  letter-spacing:.02em;
+}
+.project-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+.project-card li{
+  font-size:13.5px;
+  color:var(--text);
+  padding-left:16px;
+  position:relative;
+}
+.project-card li::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  color:var(--teal);
+}
+
+/* ---------- EDUCATION ---------- */
+.edu-card{
+  border:1px solid var(--border);
+  background:var(--panel);
+  border-radius:10px;
+  padding:24px 26px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.edu-card .deg{
+  font-family:var(--disp);
+  font-size:18px;
+  font-weight:600;
+}
+.edu-card .school{ color:var(--muted); font-family:var(--mono); font-size:13px; margin-top:4px; }
+.edu-card .year{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--teal);
+  border:1px solid rgba(82,187,170,.35);
+  padding:5px 12px;
+  border-radius:20px;
+}
+
+/* ---------- CONTACT / FOOTER ---------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:8px;
+}
+.contact-card{
+  border:1px solid var(--border);
+  background:var(--panel);
+  border-radius:10px;
+  padding:20px;
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  transition:border-color .2s ease, transform .2s ease;
+}
+.contact-card:hover{ border-color:var(--amber); transform:translateY(-2px); }
+.contact-card .clabel{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.contact-card .cval{
+  font-family:var(--disp);
+  font-size:15px;
+  font-weight:600;
+}
+
+h2.section-title{
+  font-family:var(--disp);
+  font-size:clamp(26px,3.4vw,34px);
+  font-weight:700;
+  margin-bottom:36px;
+}
+
+footer{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+  padding:40px 24px 60px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1024px){
+  .section{ padding:70px 36px; }
+  .hero{ padding:80px 36px 60px; }
+  .job{ grid-template-columns:160px 1fr; gap:24px; }
+}
+@media (max-width:900px){
+  .layout{ grid-template-columns:1fr; }
+  .sidebar{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    transform:translateX(-100%);
+    transition:transform .25s ease;
+    background:var(--bg);
+    width:300px;
+    max-width:85vw;
+    height:100vh;
+    border-right:1px solid var(--border);
+  }
+  .sidebar.open{ transform:translateX(0); box-shadow:20px 0 40px rgba(0,0,0,.4); }
+  .nav-toggle{
+    display:flex;
+    position:fixed;
+    top:18px;
+    left:18px;
+    z-index:60;
+    width:42px; height:42px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:var(--panel);
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:4px;
+    cursor:pointer;
+  }
+  .nav-toggle span{ width:18px; height:2px; background:var(--text); display:block; }
+  .hero{ padding:110px 22px 50px; }
+  .section{ padding:50px 22px; }
+  .job{ grid-template-columns:1fr; gap:14px; }
+  .projects-grid{ grid-template-columns:1fr; }
+  .req-line{ flex-wrap:wrap; }
+  .skills-grid{ grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); }
+  .education-card{ flex-direction:column; align-items:flex-start; }
+  .response-body pre{ font-size:12px; }
+}
+@media (max-width:560px){
+  .response-body{ font-size:11px; }
+  .response-body pre{ font-size:11px; }
+  .hero h1{ font-size:28px; }
+  .hero .role{ font-size:13px; }
+  .hero p.summary{ font-size:14px; }
+  .btn{ font-size:12px; padding:9px 16px; }
+  .sidebar{ width:100%; max-width:100%; }
+  .contact-grid{ grid-template-columns:1fr; }
+  .skills-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:380px){
+  .hero{ padding:100px 14px 40px; }
+  .section{ padding:40px 14px; }
+  .hero h1{ font-size:24px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}
+
+.overlay{
+  display:none;
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:40;
+}
+.overlay.show{ display:block; }
+</style>
+</head>
+<body>
+
+<div class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></div>
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      api/v1<span class="dot">.</span>portfolio
+      <span class="name">Rakesh Algot</span>
+    </div>
+
+    <nav class="nav-routes" id="navRoutes">
+      <a href="#hero" class="active"><span class="method">GET</span>/</a>
+      <a href="#skills"><span class="method">GET</span>/skills</a>
+      <a href="#experience"><span class="method">GET</span>/experience</a>
+      <a href="#projects"><span class="method">GET</span>/projects</a>
+      <a href="#education"><span class="method">GET</span>/education</a>
+      <a href="#contact"><span class="method">POST</span>/contact</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-pill"><span class="pulse"></span>open to work</span>
+      <div>Hyderabad, India</div>
+      <div class="sidebar-links">
+        <a href="mailto:rakeshalgot.career@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/algot-rakesh" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="req-line"><span class="verb">GET</span> /rakesh-algot HTTP/1.1</div>
+      <h1>Backend systems for<br><span class="accent">retrieval-grade</span> AI.</h1>
+      <div class="role">Python Developer — Generative AI &amp; FastAPI</div>
+      <p class="summary">I build scalable FastAPI services, async ingestion pipelines, and production RAG systems — the kind that turn a folder of documents into something an LLM can actually trust. Currently shipping at Yensi Solutions, Hyderabad.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:rakeshalgot.career@gmail.com">Send request →</a>
+        <a class="btn btn-ghost" href="#experience">View /experience</a>
+        <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">Resume PDF ↗</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/algot-rakesh" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+
+      <div class="response-panel">
+        <div class="response-head">
+          <span>response · 200 OK · 18ms</span>
+          <div class="dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="response-body">
+<pre><span class="punc">{</span>
+  <span class="k">"role"</span><span class="punc">:</span> <span class="s">"Python Developer"</span><span class="punc">,</span>
+  <span class="k">"focus"</span><span class="punc">:</span> <span class="punc">[</span><span class="s">"FastAPI"</span><span class="punc">,</span> <span class="s">"RAG pipelines"</span><span class="punc">,</span> <span class="s">"LLM integration"</span><span class="punc">,</span> <span class="s">"vector search"</span><span class="punc">]</span><span class="punc">,</span>
+  <span class="k">"experience_years"</span><span class="punc">:</span> <span class="n">2</span><span class="punc">,</span>
+  <span class="k">"endpoints_shipped"</span><span class="punc">:</span> <span class="n">100</span><span class="punc">+,</span>
+  <span class="k">"docs_processed"</span><span class="punc">:</span> <span class="n">300</span><span class="punc">+,</span>
+  <span class="k">"latency_reduction"</span><span class="punc">:</span> <span class="s">"~40%"</span><span class="punc">,</span>
+  <span class="k">"retrieval_accuracy_gain"</span><span class="punc">:</span> <span class="s">"20–30%"</span>
+<span class="punc">}</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="eyebrow"><span class="path">GET /skills</span><span class="status">200</span></div>
+      <h2 class="section-title">Core skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="label">Language &amp; Frameworks</div>
+          <div class="tag-row">
+            <span class="tag glow">Python</span><span class="tag glow">FastAPI</span><span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Generative AI</div>
+          <div class="tag-row">
+            <span class="tag glow">LLM Integration</span><span class="tag glow">RAG</span><span class="tag">LangChain</span><span class="tag">Qdrant</span><span class="tag">FAISS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Databases</div>
+          <div class="tag-row">
+            <span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Cloud &amp; DevOps</div>
+          <div class="tag-row">
+            <span class="tag">Docker</span><span class="tag">AWS EC2</span><span class="tag">Linux</span><span class="tag">Nginx</span><span class="tag">GitHub Actions</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Auth &amp; Security</div>
+          <div class="tag-row">
+            <span class="tag">RBAC</span><span class="tag">Keycloak</span><span class="tag">Authentication</span><span class="tag">Authorization</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="label">Testing &amp; Tools</div>
+          <div class="tag-row">
+            <span class="tag">Pytest</span><span class="tag">Postman</span><span class="tag">Swagger/OpenAPI</span><span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="eyebrow"><span class="path">GET /experience</span><span class="status">200</span></div>
+      <h2 class="section-title">Professional experience</h2>
+
+      <div class="job">
+        <div class="job-meta">
+          <span class="company">Yensi Solutions</span>
+          Python Developer<br>Hyderabad<br>Aug 2024 – Present
+        </div>
+        <ul>
+          <li>Reduced API response latency by <b>~40%</b> through Redis caching, query optimization, and efficient data retrieval strategies.</li>
+          <li>Designed asynchronous document-ingestion pipelines using FastAPI Background Tasks, Celery, Redis, and MongoDB for large-scale document processing.</li>
+          <li>Designed, developed, and maintained <b>100+</b> production-grade FastAPI endpoints supporting document processing, user management, authentication, AI workflows, and business operations.</li>
+          <li>Built retrieval workflows processing <b>300+</b> documents using Qdrant vector search, hybrid retrieval, and reranking techniques to improve retrieval quality and response relevance.</li>
+          <li>Improved retrieval accuracy and response quality by optimizing hybrid search, ranking, and reranking pipelines, achieving <b>~20–30%</b> improvement.</li>
+          <li>Deployed and managed containerized applications on AWS EC2 using Docker, Nginx, and Linux environments.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="eyebrow"><span class="path">GET /projects</span><span class="status">200</span></div>
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="ptitle">Citex <span class="badge">RAG</span></div>
+          <div class="ptag">Citation-grade context retrieval system</div>
+          <div class="stack">FastAPI · MongoDB · Qdrant · Redis · Docling · BM25 · Celery</div>
+          <ul>
+            <li>Built asynchronous ingestion pipelines for large-scale PDF and document processing.</li>
+            <li>Developed hybrid retrieval combining semantic vector search, BM25 keyword search, and reranking.</li>
+            <li>Implemented chunking, metadata extraction, and citation mapping for evidence-backed responses.</li>
+            <li>Improved retrieval latency through Redis caching and pipeline optimizations.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="ptitle">AH Ledger <span class="badge">LEGAL AI</span></div>
+          <div class="ptag">AI-powered S106 compliance system</div>
+          <div class="stack">FastAPI · MongoDB · Claude · Gemini · OCR · AsyncIO</div>
+          <ul>
+            <li>Built AI-driven pipelines for legal clause extraction and compliance tracking.</li>
+            <li>Implemented prompt engineering, validation, fallback handling, and hallucination reduction.</li>
+            <li>Built OCR-enabled workflows for scanned and image-based documents.</li>
+            <li>Developed document comparison engines using SequenceMatcher and conflict detection.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="ptitle">AI Pujari <span class="badge">MEDIA AI</span></div>
+          <div class="ptag">AI-enabled digital platform</div>
+          <div class="stack">FastAPI · MongoDB · ElevenLabs · HeyGen · FFmpeg · Keycloak · Razorpay</div>
+          <ul>
+            <li>Integrated ElevenLabs and HeyGen APIs for personalized AI voice and video.</li>
+            <li>Built async processing workflows for long-running media generation tasks.</li>
+            <li>Developed Razorpay/Stripe payment integrations with dynamic currency routing.</li>
+            <li>Built secure auth and role-based access control using Keycloak.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="ptitle">Golf Addicts <span class="badge">PLATFORM</span></div>
+          <div class="ptag">Tournament &amp; league platform</div>
+          <div class="stack">FastAPI · MongoDB · Redis · Docker · Keycloak</div>
+          <ul>
+            <li>Built REST APIs for player management, tournament setup, and leaderboards.</li>
+            <li>Implemented CSV import/export with validation and duplicate detection.</li>
+            <li>Designed Redis caching and MongoDB indexing for high-traffic performance.</li>
+            <li>Integrated Keycloak-based authentication and authorization.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="eyebrow"><span class="path">GET /education</span><span class="status">200</span></div>
+      <h2 class="section-title">Education</h2>
+      <div class="edu-card">
+        <div>
+          <div class="deg">Master of Computer Applications (MCA)</div>
+          <div class="school">Nizam College — Hyderabad</div>
+        </div>
+        <div class="year">Graduated 2022</div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="eyebrow"><span class="path">POST /contact</span><span class="status">202 Accepted</span></div>
+      <h2 class="section-title">Let's talk</h2>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:rakeshalgot.career@gmail.com">
+          <span class="clabel">Email</span>
+          <span class="cval">rakeshalgot.career@gmail.com</span>
+        </a>
+        <a class="contact-card" href="tel:+918143130499">
+          <span class="clabel">Mobile</span>
+          <span class="cval">+91-8143130499</span>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/algot-rakesh" target="_blank" rel="noopener">
+          <span class="clabel">LinkedIn</span>
+          <span class="cval">algot-rakesh</span>
+        </a>
+        <div class="contact-card">
+          <span class="clabel">Location</span>
+          <span class="cval">Hyderabad, India</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2026 Rakesh Algot · built with FastAPI energy, rendered in HTML</footer>
+  </main>
+</div>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  });
+  document.querySelectorAll('.nav-routes a').forEach(a=>{
+    a.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+  });
+
+  // scrollspy
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-routes a');
+  const spy = () => {
+    let current = sections[0].id;
+    sections.forEach(sec=>{
+      const rect = sec.getBoundingClientRect();
+      if(rect.top <= 120) current = sec.id;
+    });
+    navLinks.forEach(l=>{
+      l.classList.toggle('active', l.getAttribute('href') === '#'+current);
+    });
+  };
+  window.addEventListener('scroll', spy);
+  spy();
+</script>
+
+</body>
+</html>
